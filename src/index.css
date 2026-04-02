@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 * {
     margin: 0;
@@ -6,6 +7,24 @@
     box-sizing: border-box;
 }
 
-html, body, #root {
+body,
+input,
+button {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: #F7F7F7;
+}
+
+input,
+button {
+    border: 0;
+    outline: 0;
+}
+
+html,
+body,
+#root {
     height: 100%;
 }
