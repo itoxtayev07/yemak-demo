@@ -38,7 +38,7 @@ export function RestaurantProducts() {
                                 <article
                                     key={mainProduct.id}
                                     onClick={() => setSelectedProduct(mainProduct)}
-                                    className="product w-full max-w-[172px] rounded-[16px] overflow-hidden bg-[#fff]">
+                                    className="product w-full max-w-[172px] rounded-[16px] overflow-hidden bg-[#fff] cursor-pointer">
                                     <img className="w-[172px] h-[172px] rounded-[16px] object-cover object-center" src={mainProduct.photo} />
 
                                     <div className="product-info !pt-[8px] !px-[12px] !pb-[12px]">
