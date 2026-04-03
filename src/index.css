@@ -17,6 +17,16 @@ body {
     background: #F7F7F7;
 }
 
+img,
+button,
+input::placeholder {
+    user-select: none;
+}
+
+ul {
+    list-style: none;
+}
+
 input,
 button {
     border: 0;
@@ -25,6 +35,7 @@ button {
 
 html,
 body,
-#root {
+#root,
+.page {
     height: 100%;
 }
