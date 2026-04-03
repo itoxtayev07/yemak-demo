@@ -12,7 +12,7 @@ import user from '../../assets/user.svg'
 
 export function Header() {
     return <header className="header w-full max-w-full !px-[24px] sticky top-0 z-[10] flex justify-center items-center bg-[#FFF]">
-        <section className="header-sect w-full max-w-[1440px] !py-[18px] flex justify-between items-center gap-[16px]">
+        <section className="header-sect w-full max-w-[1080px] !py-[18px] flex justify-between items-center gap-[16px]">
             <section className="search-sect w-full max-w-[740px] flex justify-between items-center">
                 <Link className='cursor-pointer' to={'/'}><img src={logo} /></Link>
 

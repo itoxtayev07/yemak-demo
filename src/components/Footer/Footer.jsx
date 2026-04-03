@@ -13,10 +13,10 @@ export function Footer() {
     let fonts = 'font-semibold text-[16px] leading-[130%] tracking-normal text-center hover:text-[]'
     let apps = 'min-w-[160px] !p-[12px] flex items-center justify-center gap-[8px] rounded-[12px] bg-[#F7F7F7]'
     let widgetDescr = ['flex flex-col justify-center', 'text-[#B0B7BA] text-[12px] leading-[130%] tracking-normal text-center', 'text-[#12282F] text-[14px] leading-[130%] tracking-normal text-center']
-    return <footer className="footer w-full max-w-full flex flex-col justify-center items-center bg-[#FFF]">
+    return <footer className="footer w-full max-w-full flex flex-col justify-center justify-self-center items-center bg-[#FFF]">
 
         <section className="w-full max-w-full !px-[24px] !pt-[24px] !pb-[52px] flex justify-center">
-            <div className="w-full max-w-[1440px] flex justify-between items-end gap-[24px]">
+            <div className="w-full max-w-[1080px] flex justify-between items-end gap-[24px]">
                 <div className="text-info w-full max-w-[506px]">
                     <Link to={'/'}><img src={logo} /></Link>
                     <ul className='max-w-[340px] !mt-[20px] flex justify-between items-center gap-[8px] text-[#12282F]'>
@@ -60,7 +60,7 @@ export function Footer() {
         </section>
 
         <section className="w-full max-w-full !px-[24px] !py-[12px] border-t-[1px] border-t-[#F0F0F0] flex justify-center">
-            <div className="w-full max-w-[1440px] flex items-center justify-between gap-[18px]">
+            <div className="w-full max-w-[1080px] flex items-center justify-between gap-[18px]">
                 <div className="copyright text-[#12282F] text-[12px] leading-[100%] tracking-normal">© Yemak Delivery 2022. Barcha huquqlar himoyalangan.</div>
 
                 <ul className="socials w-full max-w-[76px] flex items-center justify-between gap-[4px]">
