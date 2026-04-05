@@ -11,7 +11,14 @@ export function Home({ products }) {
             <section className="restaurant-list w-full max-w-full !mt-[20px] flex flex-wrap gap-[24px]">
                 {products.data.restaurants.map((product, ind) => (
 
-                    <article key={ind} className="restaurant-card w-full max-w-[344px] rounded-[16px] overflow-hidden border-[1px] border-[#F0F0F0] bg-[#FFF] cursor-pointer" onClick={() => navigate(`/qarshi/${product.id}`)}>
+                    <article key={ind} className="restaurant-card w-full max-w-[344px] rounded-[16px] overflow-hidden border-[1px] border-[#F0F0F0] bg-[#FFF] cursor-pointer" onClick={() => navigate(`/qarshi/${product.id}`, {
+                        state: {
+                            name: product.name,
+                            img: product.image,
+                            work_time_from: product.work_time.from,
+                            work_time_to: product.work_time.to
+                        }
+                    })}>
                         <img className="rounded-[16px] w-full h-[192px]" src={product.image} />
 
                         <div className="info !px-[12px] !pt-[12px] !pb-[16px]">
