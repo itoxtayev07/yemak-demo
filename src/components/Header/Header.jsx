@@ -1,4 +1,6 @@
+import { useRef, memo } from 'react'
 import { Link } from 'react-router'
+
 import logo from '../../assets/logo.svg'
 import search from '../../assets/search.svg'
 import xIcon from '../../assets/x-icon.svg'
@@ -10,7 +12,9 @@ import basket from '../../assets/basket.svg'
 import world from '../../assets/world.svg'
 import user from '../../assets/user.svg'
 
-export function Header() {
+export const Header = memo(function Header() {
+    const inputRef = useRef()
+
     return <header className="header w-full max-w-full !px-[24px] sticky top-0 z-[10] flex justify-center items-center bg-[#FFF]">
         <section className="header-sect w-full max-w-[1080px] !py-[18px] flex justify-between items-center gap-[16px]">
             <section className="search-sect w-full max-w-[740px] flex justify-between items-center">
@@ -20,10 +24,18 @@ export function Header() {
                     <div className="flex justify-center items-center gap-[8px]">
                         <img src={search} className='w-[16.7px] h-[16.7px]' />
 
-                        <input className='search-inp font-semibold text-[14px] leading-none tracking-normal !text-[#12282F] placeholder: text-[#B0B7BA]' type="text" placeholder='Izlash' />
+                        <input
+                            className='search-inp font-semibold text-[14px] leading-none tracking-normal !text-[#12282F] placeholder: text-[#B0B7BA]'
+                            type="text"
+                            placeholder='Izlash'
+                            ref={inputRef} />
                     </div>
 
-                    <button className='x-btn cursor-pointer'><img src={xIcon} /></button>
+                    <button
+                        className='x-btn cursor-pointer'
+                        type='button'
+                        onClick={() => inputRef.current.value = ''}
+                    ><img src={xIcon} /></button>
                 </label>
 
                 <div className="search-location min-w-[208px] !py-[11px] !px-[11.5px] flex justify-center items-center gap-[8px] border-[1px] border-[#F0F0F0] rounded-[10px] cursor-pointer">
@@ -56,4 +68,4 @@ export function Header() {
             </section>
         </section>
     </header>
-}
+})

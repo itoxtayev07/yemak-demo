@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router"
+import { memo } from "react"
 
-export function Home({ products }) {
+export const Home = memo(function Home({ products }) {
 
     let navigate = useNavigate()
 
@@ -9,9 +10,8 @@ export function Home({ products }) {
             <h2 className="block-title text-[#12282F] text-[32px] font-bold leading-[130%] tracking-normal">Restoranlar</h2>
 
             <section className="restaurant-list w-full max-w-full !mt-[20px] flex flex-wrap gap-[24px]">
-                {products.data.restaurants.map((product, ind) => (
-
-                    <article key={ind} className="restaurant-card w-full max-w-[344px] rounded-[16px] overflow-hidden border-[1px] border-[#F0F0F0] bg-[#FFF] cursor-pointer" onClick={() => navigate(`/qarshi/${product.id}`, {
+                {products.data.restaurants.map((product) => (
+                    <article key={product.id} className="restaurant-card w-full max-w-[344px] rounded-[16px] overflow-hidden border-[1px] border-[#F0F0F0] bg-[#FFF] cursor-pointer" onClick={() => navigate(`/qarshi/${product.id}`, {
                         state: {
                             name: product.name,
                             img: product.image,
@@ -30,4 +30,4 @@ export function Home({ products }) {
             </section>
         </section>
     </main>
-}
+})

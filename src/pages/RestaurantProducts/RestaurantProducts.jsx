@@ -1,22 +1,26 @@
 import { useParams, useLocation } from "react-router"
 import { createPortal } from "react-dom"
-import { useState, useEffect, useId } from 'react'
+import { useState, useEffect, memo, useCallback } from 'react'
 import loading from '../../assets/loading-infinity.svg'
 
-export function RestaurantProducts() {
+export const RestaurantProducts = memo(function RestaurantProducts() {
     const [detail, setDetail] = useState()
     const [selectedProduct, setSelectedProduct] = useState()
 
     let { slug } = useParams()
     let { state } = useLocation()
 
-    const fetchProducts = () => {
+    const fetchProducts = useCallback(() => {
         fetch(`https://api.yemak.uz/user/restaurant/product?id=${slug}`)
             .then(data => data.json()).then(res => setDetail(res))
-    }
+    }, [slug])
 
     useEffect(() => {
         fetchProducts()
+    }, [fetchProducts])
+
+    const handleModalClose = useCallback((e) => {
+        if (e.target.localName === 'section') setSelectedProduct()
     }, [])
 
     if (!detail) return <div className="loading-wrap min-w-full min-h-full absolute flex items-center justify-center z-[15] bg-[#F7F7F7]">
@@ -51,19 +55,17 @@ export function RestaurantProducts() {
 
                     <section className="products-list flex flex-wrap gap-x-[12px] gap-y-[24px]">
                         {product.products.map((mainProduct) => (
-                            <>
-                                <article
-                                    key={mainProduct.id}
-                                    onClick={() => setSelectedProduct(mainProduct)}
-                                    className="product w-full max-w-[172px] rounded-[16px] overflow-hidden bg-[#fff] cursor-pointer">
-                                    <img className="w-[172px] h-[172px] rounded-[16px] object-cover object-center" src={mainProduct.photo} />
+                            <article
+                                key={mainProduct.id}
+                                onClick={() => setSelectedProduct(mainProduct)}
+                                className="product w-full max-w-[172px] rounded-[16px] overflow-hidden bg-[#fff] cursor-pointer">
+                                <img className="w-[172px] h-[172px] rounded-[16px] object-cover object-center" src={mainProduct.photo} />
 
-                                    <div className="product-info !pt-[8px] !px-[12px] !pb-[12px]">
-                                        <h5 className="!mb-[20px] text-[#12282F] text-[14px] font-semibold leading-[130%] tracking-normal">{mainProduct.name}</h5>
-                                        <span className="text-[#12282F] text-[18px] font-bold leading-[100%] tracking-normal">{mainProduct.price}</span>
-                                    </div>
-                                </article>
-                            </>
+                                <div className="product-info !pt-[8px] !px-[12px] !pb-[12px]">
+                                    <h5 className="!mb-[20px] text-[#12282F] text-[14px] font-semibold leading-[130%] tracking-normal">{mainProduct.name}</h5>
+                                    <span className="text-[#12282F] text-[18px] font-bold leading-[100%] tracking-normal">{mainProduct.price}</span>
+                                </div>
+                            </article>
                         ))}
                     </section>
                 </section>
@@ -73,10 +75,8 @@ export function RestaurantProducts() {
         {selectedProduct && createPortal(
             <section
                 className="modal-wrap fixed top-[0] left-[0] w-full max-w-full h-full z-[9999] bg-[#0D0D0DE0] flex items-center justify-center"
-                onClick={(e) => {
-                    if (e.target.localName === 'section') setSelectedProduct()
-                }}>
-                <div className="modal w-[750px] bg-[#FFF] rounded-[20px]">
+                onClick={handleModalClose}>
+                <div className="modal w-[750px] min-h-[565.88px] bg-[#FFF] rounded-[20px]">
                     <img className="w-full rounded-[20px]" src={selectedProduct.photo} />
 
                     <div className="modal-info !p-[32px] !pt-[24px]">
@@ -88,4 +88,4 @@ export function RestaurantProducts() {
             document.body
         )}
     </main >
-}
+})

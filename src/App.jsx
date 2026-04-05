@@ -1,21 +1,22 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Routes, Route } from "react-router"
-import loading from './assets/loading-infinity.svg'
+
 import { Layout } from './Layout/Layout'
-import { Home } from "./pages/Home/Home"
-import { RestaurantProducts } from "./pages/RestaurantProducts/RestaurantProducts"
+import { Home, RestaurantProducts } from "./pages"
+
+import loading from './assets/loading-infinity.svg'
 
 export function App() {
   const [data, setData] = useState()
 
-  const fetchProducts = () => {
+  const fetchProducts = useCallback(() => {
     fetch('https://api.yemak.uz/user/restaurant')
       .then(data => data.json()).then(res => setData(res))
-  }
+  }, [])
 
   useEffect(() => {
     fetchProducts()
-  }, [])
+  }, [fetchProducts])
 
   if (!data) return <div className="loading-wrap min-w-full min-h-full flex items-center justify-center">
     <img src={loading} className='w-[300px] h-[300px]' />

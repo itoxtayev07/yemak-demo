@@ -1,6 +1,5 @@
 import { Outlet } from "react-router"
-import { Header } from "../components/Header/Header"
-import { Footer } from "../components/Footer/Footer"
+import { Header, Footer } from "../components"
 
 export function Layout() {
     return <section className="pages-wrap w-full max-w-full min-h-full flex flex-col gap-[52px]">
