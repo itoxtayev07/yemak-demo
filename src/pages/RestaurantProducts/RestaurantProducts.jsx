@@ -10,9 +10,6 @@ export function RestaurantProducts() {
     let { slug } = useParams()
     let { state } = useLocation()
 
-    console.log(state.name, state.img, state.work_time_from, state.work_time_to);
-
-
     const fetchProducts = () => {
         fetch(`https://api.yemak.uz/user/restaurant/product?id=${slug}`)
             .then(data => data.json()).then(res => setDetail(res))
