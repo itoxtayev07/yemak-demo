@@ -76,7 +76,7 @@ export const RestaurantProducts = memo(function RestaurantProducts() {
             <section
                 className="modal-wrap fixed top-[0] left-[0] w-full max-w-full h-full z-[9999] bg-[#0D0D0DE0] flex items-center justify-center"
                 onClick={handleModalClose}>
-                <div className="modal w-[750px] min-h-[565.88px] bg-[#FFF] rounded-[20px]">
+                <div className="modal w-[750px] min-h-[565.88px] flex flex-col justify-end bg-[#FFF] rounded-[20px]">
                     <img className="w-full rounded-[20px]" src={selectedProduct.photo} />
 
                     <div className="modal-info !p-[32px] !pt-[24px]">
