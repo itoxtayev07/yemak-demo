@@ -1,5 +1,4 @@
 import { Link } from 'react-router'
-import { memo } from 'react'
 
 import logo from '../../assets/logo.svg'
 import appStore from '../../assets/app-store.svg'
@@ -11,7 +10,7 @@ import instagram from '../../assets/instagram.svg'
 import mobilePhone from '../../assets/mobile-phone.svg'
 import letter from '../../assets/letter.svg'
 
-export const Footer = memo(function Footer() {
+export const Footer = function Footer() {
     let fonts = 'font-semibold text-[16px] leading-[130%] tracking-normal text-center hover:text-[]'
     let apps = 'min-w-[160px] !p-[12px] flex items-center justify-center gap-[8px] rounded-[12px] bg-[#F7F7F7]'
     let widgetDescr = ['flex flex-col justify-center', 'text-[#B0B7BA] text-[12px] leading-[130%] tracking-normal text-center', 'text-[#12282F] text-[14px] leading-[130%] tracking-normal text-center']
@@ -79,4 +78,4 @@ export const Footer = memo(function Footer() {
         </section>
 
     </footer>
-})
+}

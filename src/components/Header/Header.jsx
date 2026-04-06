@@ -1,4 +1,4 @@
-import { useRef, memo } from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router'
 
 import logo from '../../assets/logo.svg'
@@ -12,7 +12,7 @@ import basket from '../../assets/basket.svg'
 import world from '../../assets/world.svg'
 import user from '../../assets/user.svg'
 
-export const Header = memo(function Header() {
+export const Header = function Header() {
     const inputRef = useRef()
 
     return <header className="header w-full max-w-full !px-[24px] sticky top-0 z-[10] flex justify-center items-center bg-[#FFF]">
@@ -68,4 +68,4 @@ export const Header = memo(function Header() {
             </section>
         </section>
     </header>
-})
+}
